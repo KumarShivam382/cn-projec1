@@ -1,9 +1,14 @@
+
 FROM node:20
 
-RUN mkdir -p /src/app
+WORKDIR /app
 
-WORKDIR src/app
+COPY package*.json ./
 
-EXPOSE 5000
+RUN npm install
 
-CMD [ "npm", "start" ]
+COPY . .
+
+EXPOSE 5173
+
+CMD ["npm", "run","dev"]
